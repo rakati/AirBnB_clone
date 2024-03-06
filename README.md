@@ -1,7 +1,7 @@
 <img src="https://miro.medium.com/v2/resize:fit:2400/1*E1LonYGC5Fx4QLY4W5SaVA.jpeg" width="100" alt="Udacity logo">
 <h1 align="center" style="color:#FC642D">AirBnB Clone Project</h1>
 
-<img src="https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20240306%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240306T110836Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=b7b6efc24de21f75bc2e7e002abe90cdca57a9c05a335874f6cd1680d6e70749">
+<img src="assets/airbnb.png">
 
 ## OverView
 This project aims to replicate the fundamental features of the AirBnB platform for educational purposes. Spanning the duration of our first year, it presents a hands-on opportunity to apply higher-level programming concepts in a real-world application. Our AirBnB clone will be a simplified version, focusing on essential functionalities to understand the core aspects of web development and data management.
