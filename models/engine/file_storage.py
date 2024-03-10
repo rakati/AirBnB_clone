@@ -7,6 +7,7 @@ File Storage Class
 
 import json
 from os import path
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -28,7 +29,7 @@ class FileStorage:
         Returns the dictionary __objects.
         '''
 
-        return self._objects
+        return self.__objects
 
     def new(self, obj):
         '''
@@ -54,13 +55,8 @@ class FileStorage:
         '''
         Deserializes the JSON file to __objects.
         '''
-
         if path.exists(self.__file_path):
             with open(self.__file_path, 'r') as file:
                 loaded_objects = json.load(file)
                 for key, value in loaded_objects.items():
-                    class_name, obj_id = key.split('.')
-                    module = __import__(
-                            'models.' + class_name, fromlist=[class_name])
-                    cls = getattr(module, class_name)
-                    self.__objeects[key] = cls(**value)
+                    self.__objects[key] = BaseModel(**value)
