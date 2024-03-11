@@ -8,6 +8,7 @@ File Storage Class
 import json
 from os import path
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -27,7 +28,7 @@ class FileStorage:
     def classes(self):
         '''Returns a list of class names available in the storage'''
 
-        return ["BaseModel"]
+        return ["BaseModel", "User"]
 
     def all(self):
         '''
@@ -64,4 +65,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 loaded_objects = json.load(file)
                 for key, value in loaded_objects.items():
-                    self.__objects[key] = BaseModel(**value)
+                    cls_name, obj_id = key.split('.')
+                    cls = eval(cls_name)
+                    self.__objects[key] = cls(**value)
