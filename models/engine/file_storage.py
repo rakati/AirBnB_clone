@@ -24,6 +24,11 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+    def classes(self):
+        '''Returns a list of class names available in the storage'''
+
+        return ["BaseModel"]
+
     def all(self):
         '''
         Returns the dictionary __objects.
