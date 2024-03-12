@@ -9,6 +9,11 @@ import json
 from os import path
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -28,7 +33,8 @@ class FileStorage:
     def classes(self):
         '''Returns a list of class names available in the storage'''
 
-        return ["BaseModel", "User"]
+        return [
+            "BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]
 
     def all(self):
         '''
