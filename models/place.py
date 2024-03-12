@@ -3,7 +3,7 @@
 Place class inherit from Base class
 '''
 
-from base_model import BaseModel
+from .base_model import BaseModel
 
 
 class Place(BaseModel):
