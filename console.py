@@ -139,6 +139,19 @@ class HBNBCommand(cmd.Cmd):
 
         pass
 
+    def default(self, line):
+        '''special lines that need different treatment'''
+        cmd = line.split('.')
+        if len(cmd) != 2:
+            print("*** Unkown syntax:", line)
+        elif cmd[0] not in storage.classes():
+            print(f"** {cmd[0]} class doesn't exist **")
+        elif cmd[1] == "all()":
+            print([str(value) for key, value in storage.all().items(
+                        ) if key.split('.')[0] == cmd[0]])
+        else:
+            print("** class method not supported **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
