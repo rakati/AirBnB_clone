@@ -140,6 +140,16 @@ class HBNBCommand(cmd.Cmd):
 
         pass
 
+    def do_count(self, arg):
+        '''This command count the number of instance af given class'''
+        if not arg:
+            print("** class name missing **")
+        elif arg not in storage.classes():
+            print("** class doesn't exist **")
+        else:
+            print(len([value for key, value in storage.all().items(
+                        ) if key.split('.')[0] == arg]))
+
     def default(self, line):
         '''special lines that need different treatment'''
         pattern = r'^(\w+)\.(\w+)\((.*)\)$'
