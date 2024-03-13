@@ -4,6 +4,7 @@ Console Module
 '''
 
 import cmd
+import re
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -139,18 +140,30 @@ class HBNBCommand(cmd.Cmd):
 
         pass
 
+    def do_count(self, arg):
+        '''This command count the number of instance af given class'''
+        if not arg:
+            print("** class name missing **")
+        elif arg not in storage.classes():
+            print("** class doesn't exist **")
+        else:
+            print(len([value for key, value in storage.all().items(
+                        ) if key.split('.')[0] == arg]))
+
     def default(self, line):
         '''special lines that need different treatment'''
-        cmd = line.split('.')
-        if len(cmd) != 2:
-            print("*** Unkown syntax:", line)
-        elif cmd[0] not in storage.classes():
-            print(f"** {cmd[0]} class doesn't exist **")
-        elif cmd[1] == "all()":
-            print([str(value) for key, value in storage.all().items(
-                        ) if key.split('.')[0] == cmd[0]])
+        pattern = r'^(\w+)\.(\w+)\((.*)\)$'
+        match = re.match(pattern, line)
+        if match:
+            class_name, method_name, args = match.groups()
+            cmd_method = getattr(self, 'do_' + method_name, None)
+            if callable(cmd_method):
+                args_str = " ".join([arg.strip() for arg in args.split(',')])
+                cmd_method(f'{class_name} {args_str}'.strip())
+            else:
+                print("*** Unsupported method:", method_name)
         else:
-            print("** class method not supported **")
+            print("*** Unknown syntax:", line)
 
 
 if __name__ == '__main__':
