@@ -49,6 +49,30 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(new_storage._FileStorage__objects[key].to_dict(
                     ), obj.to_dict())
 
+    def test_reload_with_arg(self):
+        '''test reload with argument'''
+
+        with self.assertRaises(TypeError):
+            self.storage.reload(None)
+
+    def test_save_with_arg(self):
+        '''test save with argument'''
+
+        with self.assertRaises(TypeError):
+            self.storage.save(None)
+
+    def test_new_with_args(self):
+        '''test new with argument'''
+
+        with self.assertRaises(TypeError):
+            self.storage.new(BaseModel(), 1)
+
+    def test_all_with_arg(self):
+        '''test all with argument'''
+
+        with self.assertRaises(TypeError):
+            self.storage.all(None)
+
 
 if __name__ == "__main__":
     unittest.main()
