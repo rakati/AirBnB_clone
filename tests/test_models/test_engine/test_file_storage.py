@@ -38,8 +38,8 @@ class TestFileStorage(unittest.TestCase):
         """Test the classes method."""
         classes = self.storage.classes()
         self.assertEqual(classes, [
-            "BaseModel", "User", "Place", "State", "City", "Amenity", "Review"
-        ])
+            "BaseModel", "User", "Place", "State
+            ", "City", "Amenity", "Review"])
 
     def test_all(self):
         """Test the all method."""
