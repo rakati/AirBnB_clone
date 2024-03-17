@@ -2,6 +2,7 @@
 '''Unittests for FileStorage Class'''
 
 import unittest
+from datetime import datetime
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
@@ -87,6 +88,13 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             data = f.read()
             self.assertIn("BaseModel." + obj.id, data)
+
+    def test_save_updates_updated_at(self):
+        obj = BaseModel()
+        old_updated_at = obj.updated_at
+        obj.save()
+        new_updated_at = obj.updated_at
+        self.assertNotEqual(old_updated_at, new_updated_at)
 
 
 if __name__ == "__main__":
