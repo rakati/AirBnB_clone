@@ -73,6 +73,21 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.storage.all(None)
 
+    def test_reload(self):
+        ''' Test if reload() properly loads objects from JSON file '''
+        obj = BaseModel()
+        obj.save()
+        self.storage.reload()
+        self.assertIn("BaseModel." + obj.id, self.storage.all())
+
+    def test_base_model_save(self):
+        ''' Test if save() method of BaseModel saves object to JSON file '''
+        obj = BaseModel()
+        obj.save()
+        with open("file.json", "r") as f:
+            data = f.read()
+            self.assertIn("BaseModel." + obj.id, data)
+
 
 if __name__ == "__main__":
     unittest.main()
