@@ -3,11 +3,11 @@ header {
 	height: 70px;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
-	display: table;
 }
 
 .logo {
-	vertical-align: middle;
-	padding-left: 20px;
-  	display: table-cell;
+	margin-left: 20px;
+	height:100%;
+	background: url("../images/airbnb-logo.png") no-repeat;
+	background-position:left;
 }
